@@ -70,3 +70,5 @@ async function connectWallet() {
 
 connectBtn.addEventListener("click", connectWallet);
 disconnectBtn.addEventListener("click", disconnectWallet);
+
+disconnectWallet();
