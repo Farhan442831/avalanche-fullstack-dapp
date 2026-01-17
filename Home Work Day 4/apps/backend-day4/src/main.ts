@@ -1,24 +1,20 @@
 import { NestFactory } from '@nestjs/core';
 import { AppModule } from './app.module';
-import { SwaggerModule, DocumentBuilder } from '@nestjs/swagger';
+import { DocumentBuilder, SwaggerModule } from '@nestjs/swagger';
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
 
-  // 1. AKTIFKAN CORS (WAJIB BIAR GAK FAILED TO FETCH)
-  app.enableCors();
-
   const config = new DocumentBuilder()
-    .setTitle('Simple Storage dApp API')
-    .setDescription('The Simple Storage dApp API description')
+    .setTitle('Muchammad Farhan Ramadhan - 231011402182') // Nama & NIM lo di sini
+    .setDescription('Tugas Day 4: Blockchain Module Integration with Avalanche')
     .setVersion('1.0')
-    .addTag('simple-storage')
     .build();
-
+    
   const document = SwaggerModule.createDocument(app, config);
-  SwaggerModule.setup('documentation', app, document);
+  SwaggerModule.setup('documentation', app, document); // Ini jalur buat buka di browser
 
   await app.listen(3000);
-  console.log('🚀 Server running at http://localhost:3000/documentation');
+  console.log('Server running at http://localhost:3000/documentation');
 }
 bootstrap();
